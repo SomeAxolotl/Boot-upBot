@@ -24,6 +24,7 @@ public class Base : MonoBehaviour
     public AudioClip boot;
     public AudioClip chime;
     
+    
 
     
     // Start is called before the first frame update
@@ -41,10 +42,7 @@ public class Base : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) 
-        {
-            Application.Quit();
-        }
+        
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         
@@ -54,28 +52,28 @@ public class Base : MonoBehaviour
             PlaySound(chime);
             if(direction == 1)
             {
-                Debug.Log("Left");
+                
                 timer = changeTime;
                 direction = 1;
                 animator.SetInteger("direction", 1);
             }
             if(direction == 2)
             {
-                Debug.Log("Right");
+                
                 timer = changeTime;
                 direction = 2;
                 animator.SetInteger("direction", 2);
             }
             if(direction == 3)
             {
-                Debug.Log("Up");
+                
                 timer = changeTime;
                 direction = 3;
                 animator.SetInteger("direction", 3);
             }
             if(direction == 4)
             {
-                Debug.Log("Down");
+                
                 timer = changeTime;
                 direction = 4;
                 animator.SetInteger("direction", 4);
@@ -90,13 +88,25 @@ public class Base : MonoBehaviour
                failtimer -= Time.deltaTime;
                if(horizontal < 0)
                 {
-                    Debug.Log("Correct");
+                    
                     direction = 0;
                     failtimer = failTime;
                     animator.SetInteger("direction", 0);
                     points += 1;
                     PlaySound(correct);
                     scoreanimator.SetInteger("score", scoreanimator.GetInteger("score") + 1);
+                }
+                if(horizontal > 0)
+                {
+                    Lose();
+                }
+                if(vertical > 0)
+                {
+                    Lose();
+                }
+                if(vertical < 0)
+                {
+                    Lose();
                 }
 
             }
@@ -105,13 +115,25 @@ public class Base : MonoBehaviour
                failtimer -= Time.deltaTime;
                if(horizontal > 0)
                 {
-                    Debug.Log("Correct");
+                    
                     direction = 0;
                     failtimer = failTime;
                     animator.SetInteger("direction", 0);
                     points += 1;
                     PlaySound(correct);
                     scoreanimator.SetInteger("score", scoreanimator.GetInteger("score") + 1);
+                }
+                if(horizontal < 0)
+                {
+                    Lose();
+                }
+                if(vertical > 0)
+                {
+                    Lose();
+                }
+                if(vertical < 0)
+                {
+                    Lose();
                 }
             }
         if(direction == 3)
@@ -119,7 +141,7 @@ public class Base : MonoBehaviour
                failtimer -= Time.deltaTime;
                if(vertical > 0)
                 {
-                    Debug.Log("Correct");
+                    
                     direction = 0;
                     failtimer = failTime;
                     animator.SetInteger("direction", 0);
@@ -127,19 +149,43 @@ public class Base : MonoBehaviour
                     points += 1;
                     scoreanimator.SetInteger("score", scoreanimator.GetInteger("score") + 1);
                 }
+                 if(horizontal < 0)
+                {
+                    Lose();
+                }
+                if(horizontal > 0)
+                {
+                    Lose();
+                }
+                if(vertical < 0)
+                {
+                    Lose();
+                }
             }
         if(direction == 4)
             {
               failtimer -= Time.deltaTime;
                if(vertical < 0)
                 {
-                    Debug.Log("Correct");
+                    
                     direction = 0;
                     failtimer = failTime;
                     animator.SetInteger("direction", 0);
                     points += 1;
                     PlaySound(correct);
                     scoreanimator.SetInteger("score", scoreanimator.GetInteger("score") + 1);
+                }
+                 if(horizontal > 0)
+                {
+                    Lose();
+                }
+                if(vertical > 0)
+                {
+                    Lose();
+                }
+                if(horizontal < 0)
+                {
+                    Lose();
                 }
             }
         if(failtimer < 0)
