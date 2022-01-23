@@ -7,15 +7,23 @@ public class start : MonoBehaviour
     public GameObject main;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         main.GetComponent<Base>().enabled = false;
-        Invoke("being", 2);
+        
 
     }
 
-
+    void OnEnable()
+    {
+        Invoke("being", 2);
+    }
+    
     // Update is called once per frame
+    void Update() 
+    {
+        
+    }
     void being()
     {
         main.GetComponent<Base>().enabled = true;

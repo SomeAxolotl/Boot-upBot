@@ -38,6 +38,8 @@
   <ItemGroup>
      <Compile Include="Assets\Base.cs" />
      <Compile Include="Assets\start.cs" />
+     <Compile Include="Assets\load.cs" />
+     <Compile Include="Assets\empty.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
